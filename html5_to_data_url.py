@@ -1,10 +1,14 @@
 import base64
 
-html_code = b"""
-<!--add your html5 code here-->
-"""
-html_code_base64_encoded = base64.urlsafe_b64encode(html_code) 
-html_code_base64_encoded_clean = html_code_base64_encoded.decode("utf-8") #removes b'' from the base64 encoding
+def create_data_uri():
+    html5_code = """
+    <!--add html5 code here-->
+    <h1>filler text</h1>
+    """
+    html5_code_b = html5_code.encode("utf-8")
+    html5_code_b64 = base64.b64encode(html5_code_b)
+    b64_string = html5_code_b64.decode("utf-8")
+    print("HTML5 Code To Data URI")
+    print(f"Data URI: data://text/html;base64,{b64_string}")
 
-print("HTML5 Code To Data URL Converter")
-print(f"Data URL (copy and paste): data:text/html;base64,{html_code_base64_encoded_clean}")
+create_data_uri()
